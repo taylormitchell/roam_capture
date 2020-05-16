@@ -6,7 +6,7 @@ document.body.appendChild(copyFrom);
 
 //Create the text string you want to copy
 var selection = document.getSelection().toString();
-var text = selection + " #Quote " + "[source](" + document.URL + ")";
+var text = `${selection} #Quote [source](${document.URL})`;
 
 //Add the text string to the text area and copy it
 copyFrom.textContent = text;
