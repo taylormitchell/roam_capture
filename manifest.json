@@ -1,0 +1,25 @@
+{
+    "name": "Roam Capture",
+    "version": "1.0",
+    "description": "Shortcuts for roam style capturing",
+    "permissions": ["activeTab"],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "commands": {
+     "capture-page": {
+       "suggested_key": {
+         "mac": "Command+MacCtrl+P"
+       },
+       "description": "Capture Page"
+     },
+     "capture-quote": {
+       "suggested_key": {
+         "mac": "Command+MacCtrl+C"
+       },
+       "description": "Capture Quote"
+     }
+    },
+    "manifest_version": 2
+}
