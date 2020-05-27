@@ -5,7 +5,13 @@ var copyFrom = document.createElement("textarea");
 document.body.appendChild(copyFrom);
 
 //Create the text string you want to copy
-var text = `[${document.title.replace(/\[(.*)\]/,"($1)")}](${document.URL})`;
+var selection = document.getSelection().toString();
+if (selection == "") {
+    var title = document.title.replace(/\[(.*)\]/,"($1)");
+} else {
+    var title = selection;
+}
+var text = `[${title}](${document.URL})`;
 
 //Add the text string to the text area and copy it
 copyFrom.textContent = text;
