@@ -30,7 +30,7 @@ if (base_url==="https://twitter.com" && selection==="") {
     var url = document.URL;
     var text = roamify(tweet, url);
 } else {
-    var text = `${selection} #Quote [source](${document.URL})`;
+    var text = `"${selection}" #Quote [source](${document.URL})`;
 }
 
 //Add the text string to the text area and copy it
