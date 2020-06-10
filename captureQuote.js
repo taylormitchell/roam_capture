@@ -29,6 +29,9 @@ if (base_url==="https://twitter.com" && selection==="") {
     var tweet = document.title;
     var url = document.URL;
     var text = roamify(tweet, url);
+} else if (document.URL==="https://read.amazon.com/notebook") {
+    var book_title = document.querySelector("h2").textContent;
+    var text = `"${selection}" #Quote [source]([[${book_title}]])`;
 } else {
     var text = `"${selection}" #Quote [source](${document.URL})`;
 }
