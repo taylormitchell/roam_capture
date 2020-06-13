@@ -1,7 +1,7 @@
 {
-    "name": "Roam Capture",
+    "name": "Roam Copy",
     "version": "1.0",
-    "description": "Shortcuts for roam style capturing",
+    "description": "Shortcuts for copying web content with a roam style",
     "permissions": ["activeTab"],
     "background": {
         "scripts": ["background.js"],
