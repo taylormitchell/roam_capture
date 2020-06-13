@@ -1,11 +1,11 @@
-# Roam Capture
+# Roam Copy
 
-A Chrome Extension to quickly capture web page content with a Roam style.
+A Chrome Extension to quickly copy web page content with a Roam style.
 
 ## Usage
 
-### Capture page
+### Copy page
 `Cmd + Ctrl + P`: Copy page title and url as `[${document.title}](${document.URL})`
 
-### Capture quote
+### Copy quote
 `Cmd + Ctrl + C`: Copy selection and url as `${selection} #Quote [source](${document.URL})`
