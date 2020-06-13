@@ -2,8 +2,6 @@
 
 A Chrome Extension to quickly copy web page content with a Roam style.
 
-## Usage
-
 ### Copy selection
 
 `Cmd + Ctrl + C`: Copy selection and url as `${selection} #Quote \n  - source:: (${document.URL})`
