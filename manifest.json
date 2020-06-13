@@ -8,13 +8,13 @@
         "persistent": false
     },
     "commands": {
-     "capture-page": {
+     "copy-page": {
        "suggested_key": {
          "mac": "Command+MacCtrl+P"
        },
        "description": "Capture Page"
      },
-     "capture-quote": {
+     "copy": {
        "suggested_key": {
          "mac": "Command+MacCtrl+C"
        },
