@@ -27,7 +27,7 @@ if (selection==="") {
         selection = tag_user_in_tweet(title) + " #Quote #Tweet";
         selection = add_source_as_child(selection, url)
     // Amazon
-    } else if (base_url==="https://www.amazon.com") {
+    } else if (base_url==="https://www.amazon.com" || base_url==="https://www.amazon.ca") {
         var alias = document.querySelector("#productTitle").textContent;
         alias = remove_newlines(alias);
         alias = remove_start_end_whitespace(alias);
@@ -42,13 +42,40 @@ if (selection==="") {
     // Kindle
     if (document.URL==="https://read.amazon.com/notebook") {
         var book_title = document.querySelector("h2").textContent;
-        selection = `"${selection}" #Quote`;
-        selection = add_source_as_child(selection, `[[${book_title}]]`);
+        selection = `"${selection}" #Quote #[[[[source]][[:]][[${book_title}]]]]`;
+        //selection = add_source_as_child(selection, `[[${book_title}]]`);
+    } else if (base_url=="https://en.wikipedia.org") {
+
+        var title = url.split("/").pop().replace(/#.*/,"").replace("_"," ");
+
+        var range = window.getSelection().getRangeAt(0);
+        var selectionContents = range.cloneContents();
+        var selectionNodes = selectionContents.childNodes;
+
+        // Convert hyperlinks to Roam references
+        var selection = "";
+        selectionNodes.forEach((node) => {
+            if (node.nodeName=="B") {
+                selection = selection + `[${node.textContent}]([[${title}]])`;
+            } else if (node.nodeName=="A") {
+                selection = selection + `[${node.textContent}]([[${node.title}]])`;
+            } else if (node.nodeName=="SUP") {
+                // Skip citation links
+                selection = selection;
+            } else {
+                selection = selection + node.textContent;
+            }
+        })
+
+        // Add a reference back to the web page 
+        selection = `"${selection}" #Quote #[[[[source]][[:]][[${url}]]]]`;
+
+        selection = remove_newlines(selection);
     // Everything else
     } else {
         selection = remove_newlines(selection);
-        selection = `"${selection}" #Quote`;
-        selection = add_source_as_child(selection, url);
+        selection = `"${selection}" #Quote #[[[[source]][[:]][[${url}]]]]`;
+        //selection = add_source_as_child(selection, url);
     }
 }
 
