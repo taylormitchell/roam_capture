@@ -5,6 +5,9 @@ tag_user_in_tweet = function(tweet) {
 add_source_as_child = function(text, src) {
     return `- ${text}\n  - source:: ${src}`
 }
+add_child = function(parent, child) {
+    return `- ${parent}\n  - ${child}`
+}
 remove_newlines = function(text) {
     return text.replace(/\s*\n\s*/g, " ");
 }
@@ -13,6 +16,8 @@ remove_start_end_whitespace = function(text) {
     new_text = new_text.replace(/\s+$/, "");
     return new_text
 }
+
+console.log("derp");
 
 // Get web content and roamify
 var base_url = window.location.origin;
@@ -24,8 +29,8 @@ var selection = document.getSelection().toString();
 if (selection==="") {
     // Tweet 
     if (base_url==="https://twitter.com") {
-        selection = tag_user_in_tweet(title) + " #Quote #Tweet";
-        selection = add_source_as_child(selection, url)
+        var tweet_text = tag_user_in_tweet(title) + " #Quote #Tweet";
+        selection = add_child(url, tweet_text);
     // Amazon
     } else if (base_url==="https://www.amazon.com" || base_url==="https://www.amazon.ca") {
         var alias = document.querySelector("#productTitle").textContent;
